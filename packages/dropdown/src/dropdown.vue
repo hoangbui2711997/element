@@ -183,7 +183,9 @@
         ele.setAttribute('tabindex', '0'); // 下次期望的聚焦元素
       },
       removeTabindex() {
-        this.triggerElm.setAttribute('tabindex', '-1');
+        if (this.triggerElm) {
+          this.triggerElm.setAttribute('tabindex', '-1');
+        }
         this.menuItemsArray.forEach((item) => {
           item.setAttribute('tabindex', '-1');
         });
@@ -192,7 +194,6 @@
         this.dropdownElm.setAttribute('id', this.listId);
         this.triggerElm.setAttribute('aria-haspopup', 'list');
         this.triggerElm.setAttribute('aria-controls', this.listId);
-
         if (!this.splitButton) { // 自定义
           this.triggerElm.setAttribute('role', 'button');
           this.triggerElm.setAttribute('tabindex', this.tabindex);
@@ -267,6 +268,8 @@
             <i class="el-dropdown__icon el-icon-arrow-down"></i>
           </el-button>
         </el-button-group>);
+
+      console.log(triggerElm, 'triggerElm');
 
       return (
         <div class="el-dropdown" v-clickoutside={hide}>
