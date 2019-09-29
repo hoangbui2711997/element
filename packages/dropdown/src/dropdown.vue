@@ -184,6 +184,7 @@
       },
       removeTabindex() {
         if (this.triggerElm) {
+          console.log(this.triggerElm, "this.triggerElm");
           this.triggerElm.setAttribute('tabindex', '-1');
         }
         this.menuItemsArray.forEach((item) => {
@@ -192,8 +193,10 @@
       },
       initAria() {
         this.dropdownElm.setAttribute('id', this.listId);
-        this.triggerElm.setAttribute('aria-haspopup', 'list');
-        this.triggerElm.setAttribute('aria-controls', this.listId);
+        if (this.triggerElm) {
+          this.triggerElm.setAttribute('aria-haspopup', 'list');
+          this.triggerElm.setAttribute('aria-controls', this.listId);
+        }
         if (!this.splitButton) { // 自定义
           this.triggerElm.setAttribute('role', 'button');
           this.triggerElm.setAttribute('tabindex', this.tabindex);
@@ -268,8 +271,6 @@
             <i class="el-dropdown__icon el-icon-arrow-down"></i>
           </el-button>
         </el-button-group>);
-
-      console.log(triggerElm, 'triggerElm');
 
       return (
         <div class="el-dropdown" v-clickoutside={hide}>
