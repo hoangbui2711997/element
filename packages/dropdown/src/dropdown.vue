@@ -186,9 +186,11 @@
         if (this.triggerElm && typeof this.triggerElm.setAttribute === 'function') {
           this.triggerElm.setAttribute('tabindex', '-1');
         }
-        this.menuItemsArray.forEach((item) => {
-          item.setAttribute('tabindex', '-1');
-        });
+        if (this.menuItemsArray) {
+          this.menuItemsArray.forEach((item) => {
+            item.setAttribute('tabindex', '-1');
+          });
+        }
       },
       initAria() {
         this.dropdownElm.setAttribute('id', this.listId);
