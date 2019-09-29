@@ -111,14 +111,14 @@
         };
       },
       show() {
-        if (this.triggerElm.disabled) return;
+        if (this._.get(this.triggerElm, 'disabled', undefined)) return;
         clearTimeout(this.timeout);
         this.timeout = setTimeout(() => {
           this.visible = true;
         }, this.trigger === 'click' ? 0 : this.showTimeout);
       },
       hide() {
-        if (this.triggerElm.disabled) return;
+        if (this._.get(this.triggerElm, 'disabled', undefined)) return;
         this.removeTabindex();
         if (this.tabindex >= 0) {
           this.resetTabindex(this.triggerElm);
@@ -129,7 +129,7 @@
         }, this.trigger === 'click' ? 0 : this.hideTimeout);
       },
       handleClick() {
-        if (this.triggerElm.disabled) return;
+        if (this._.get(this.triggerElm, 'disabled', undefined)) return;
         if (this.visible) {
           this.hide();
         } else {

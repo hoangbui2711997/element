@@ -1,3 +1,5 @@
+import _ from 'lodash';
+
 function broadcast(componentName, eventName, params) {
   this.$children.forEach(child => {
     var name = child.$options.componentName;
@@ -10,6 +12,11 @@ function broadcast(componentName, eventName, params) {
   });
 }
 export default {
+  computed: {
+    '_'() {
+      return _;
+    }
+  },
   methods: {
     dispatch(componentName, eventName, params) {
       var parent = this.$parent || this.$root;
