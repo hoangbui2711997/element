@@ -183,8 +183,7 @@
         ele.setAttribute('tabindex', '0'); // 下次期望的聚焦元素
       },
       removeTabindex() {
-        if (this.triggerElm) {
-          console.log(this.triggerElm, "this.triggerElm");
+        if (this.triggerElm && typeof this.triggerElm.setAttribute === 'function') {
           this.triggerElm.setAttribute('tabindex', '-1');
         }
         this.menuItemsArray.forEach((item) => {
