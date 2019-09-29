@@ -180,7 +180,9 @@
       },
       resetTabindex(ele) { // 下次tab时组件聚焦元素
         this.removeTabindex();
-        ele.setAttribute('tabindex', '0'); // 下次期望的聚焦元素
+        if (ele) {
+          ele.setAttribute('tabindex', '0'); // 下次期望的聚焦元素
+        }
       },
       removeTabindex() {
         if (this.triggerElm && typeof this.triggerElm.setAttribute === 'function') {
